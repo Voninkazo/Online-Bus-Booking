@@ -1,0 +1,9 @@
+---
+import Header from "../components/Header.astro";
+import Login from "../components/Login";
+---
+
+<div class="relative">
+  <Header />
+  <Login client:only="react"/>
+</div>

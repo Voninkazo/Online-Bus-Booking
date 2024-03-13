@@ -1,0 +1,14 @@
+---
+import NavBar from "./NavBar.astro";
+import { Image } from "astro:assets";
+import logo from "../assets/icons/logo.svg";
+---
+
+<header
+  class="fixed z-20 w-full bg-white py-0 flex justify-between items-center shadow-2xl px-10 text-black"
+>
+  <div class="w-20 h-20 py-2">
+    <Image src={logo} alt={"logo"} class={"w-full h-full"} />
+  </div>
+  <NavBar />
+</header>

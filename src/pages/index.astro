@@ -1,0 +1,40 @@
+---
+import Header from "../components/Header.astro";
+import bus from "../assets/bus.mp4";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <layout title="Home">
+      <div class="relative overflow-hidden max-w-max">
+        <div class="absolute h-full w-full">
+          <Header />
+          <main class="flex flex-col h-full items-center justify-center text-white relative z-40">
+            <h1 class="text-4xl font-bold">Bus tickets online</h1>
+            <div class="mt-10 flex gap-x-4">
+              <div class="text-center w-24 border rounded-full py-2 cursor-pointer">
+                <a href="/signin">Sign in</a>
+              </div>
+              <div class="text-center w-24 border rounded-full py-2 cursor-pointer">
+                <a href="/signup">Sign up</a>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div  class="bg-black text-white opacity-80 w-screen h-screen absolute"/>
+        <div class="flex justify-center items-center">
+          <video width="100%" height="100%" autoplay loop muted>
+            <source src={bus} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </layout>
+  </body>
+</html>
