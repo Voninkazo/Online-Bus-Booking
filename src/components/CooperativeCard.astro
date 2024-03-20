@@ -1,0 +1,11 @@
+---
+interface Props {
+  cooperativeInfoName: String;
+}
+
+const { cooperativeInfoName } = Astro.props;
+---
+
+<li class="bg-cyan-700 text-xl font-bold uppercase shadow-sm border rounded-md w-[151px] h-28 text-center flex items-center justify-center">
+  {cooperativeInfoName}
+</li>

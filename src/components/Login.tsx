@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { loginUrl } from "../utils/variables";
-import { getUserInfo } from "../../stores/users";
+import { getUserInfo } from "../../stores/buses";
 
 const Login = () => {
   const [user, setUser] = useState({
