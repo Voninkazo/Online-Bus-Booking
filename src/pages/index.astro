@@ -12,10 +12,12 @@ const uniquecooperativesInfo = cooperativesInfo.filter(
   (item: Bus, index: number) => cooperativesInfo.indexOf(item) === index
 );
 
+const busDepartureLocation =  buses.map((bus: Bus) => bus.busDepartureLocation);
+const destination =  buses.map((bus: Bus) => bus.destination);
 ---
 
 <Layout title="Home">
-  <SearchForm client:only="react" />
+  <SearchForm client:only="react" busDepartureLocation={busDepartureLocation} destination={destination} />
   <h2 class="text-2xl font-bold text-center pt-20">Our partners include</h2>
   <ul class="relative pt-10 flex justify-start gap-3 flex-wrap">
     {
