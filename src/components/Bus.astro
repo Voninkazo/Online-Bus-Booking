@@ -1,0 +1,46 @@
+---
+const {
+  cooperativeName,
+  departureStationPlace,
+  arrivalStationPlace,
+  departureTime,
+  arrivalTime,
+  estimatedDuration,
+  price,
+} = Astro.props;
+---
+
+<div
+  class="px-5 py-3 md:px-8 md:py-5 lg:px-10 lg:py-6 xl:px-12 xl:py-8 border rounded-lg shadow-md"
+>
+  <h3 class="text-lg md:text-xl lg:text-2xl xl:text-3xl mb-2">
+    {cooperativeName}
+  </h3>
+  <div class="flex flex-wrap justify-between items-center">
+    <div class="md:w-auto flex-wrap flex gap-x-4 md:w-[200px]">
+      <img src="/src/assets/icons/bus.svg" alt="Bus" class="w-[50px]" />
+      <p class="text-sm md:text-base">
+        {departureTime}
+        <br />
+        <span class="uppercase">{departureStationPlace}</span>
+      </p>
+      <p class="text-base md:text-lg lg:text-xl xl:text-2xl">
+        ―{estimatedDuration}➝
+      </p>
+    </div>
+    <div class="mb-2 md:mb-0">
+      <p class="text-sm md:text-base">
+        {arrivalTime}
+        <br />
+        <span class="uppercase">{arrivalStationPlace}</span>
+      </p>
+    </div>
+    <div>
+      <p class="text-sm md:text-base">Price: {price}Ar/Seat</p>
+      <button
+        class="text-sm text-white font-semibold md:text-base rounded-2xl py-0.5 px-2 md:px-6 bg-red-600"
+        >Details</button
+      >
+    </div>
+  </div>
+</div>
