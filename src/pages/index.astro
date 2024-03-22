@@ -1,37 +1,56 @@
 ---
-import bus from "../assets/bus.mp4";
+import { GET } from "../pages/api";
+import CooperativeCard from "../components/CooperativeCard.astro";
+import { type Bus } from "../utils/type";
 import Layout from "../layout/Layout.astro";
+import SearchForm from "../components/SearchForm.tsx";
+
+const response = await GET(Astro);
+const buses = await response.json();
+const cooperativesInfo = buses.map((bus: Bus) => bus.cooperative.name);
+const uniquecooperativesInfo = cooperativesInfo.filter(
+  (item: Bus, index: number) => cooperativesInfo.indexOf(item) === index
+);
+
+const busDepartureLocation =  buses.map((bus: Bus) => bus.busDepartureLocation);
+const destination =  buses.map((bus: Bus) => bus.destination);
 ---
 
 <Layout title="Home">
-  <main class="max-w-screen-xl mx-auto">
-    <div class="relative overflow-hidden">
-      <div class="absolute h-full w-full">
-        <div
-          class="flex flex-col h-full items-center justify-center text-white relative z-40"
-        >
-          <h1 class="text-4xl font-bold">Bus tickets online</h1>
-          <div class="mt-10 flex gap-x-4">
-            <div
-              class="text-center w-24 border rounded-full py-2 cursor-pointer"
-            >
-              <a href="/signin">Sign in</a>
-            </div>
-            <div
-              class="text-center w-24 border rounded-full py-2 cursor-pointer"
-            >
-              <a href="/signup">Sign up</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bg-black text-white opacity-80 w-screen h-screen absolute">
-      </div>
-      <div class="flex justify-center items-center">
-        <video width="100%" height="100%" autoplay loop muted>
-          <source src={bus} type="video/mp4" />
-        </video>
-      </div>
-    </div>
-  </main>
+  <SearchForm client:only="react" busDepartureLocation={busDepartureLocation} destination={destination} />
+  <h2 class="text-2xl font-bold text-center pt-20">Our partners include</h2>
+  <ul class="relative pt-10 flex justify-start gap-3 flex-wrap">
+    {
+      uniquecooperativesInfo.map((cooperativeInfoName: String, index: number) => (
+        <CooperativeCard cooperativeInfoName={cooperativeInfoName} index={index} />
+      ))
+    }
+  </ul>
+  <div class="mt-8">
+    <h3 class="text-lg font-bold mb-3">What is Happy Travel?</h3>
+    <p>
+      In publishing and graphic design, Lorem ipsum is a placeholder text
+      commonly used to demonstrate the visual form of a document or a typeface
+      without relying on meaningful content. Lorem ipsum may be used as a
+      placeholder before the final copy is available
+    </p>
+  </div>
+  <div class="mt-8">
+    <h3 class="text-lg font-bold mb-3">What is Happy Travel?</h3>
+    <p>
+      In publishing and graphic design, Lorem ipsum is a placeholder text
+      commonly used to demonstrate the visual form of a document or a typeface
+      without relying on meaningful content. Lorem ipsum may be used as a
+      placeholder before the final copy is available
+    </p>
+  </div>
+  <div class="mt-8">
+    <h3 class="text-lg font-bold mb-3">What is Happy Travel?</h3>
+    <p>
+      In publishing and graphic design, Lorem ipsum is a placeholder text
+      commonly used to demonstrate the visual form of a document or a typeface
+      without relying on meaningful content. Lorem ipsum may be used as a
+      placeholder before the final copy is available
+    </p>
+  </div>
 </Layout>
